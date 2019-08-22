@@ -1,0 +1,1 @@
+{"name":"farklescorecard","version":"1.0.0","description":"","main":"index.js","scripts":{"dev":"next","build":"next build && next export","start":"serve ./out"},"author":"","license":"ISC","dependencies":{"next":"^9.0.4","react":"^16.9.0","react-dom":"^16.9.0","react-grid-system":"^5.0.2"},"readme":"ERROR: No README data found!","_id":"farklescorecard@1.0.0"}
