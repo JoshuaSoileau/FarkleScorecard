@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Row, Col } from "react-grid-system";
 import Button from "./Button";
 
-const Calculator = () => {
+const Calculator = ({ addScore }) => {
   const [score, setScore] = useState("0");
 
   const handleScoreClick = number => {
@@ -13,6 +13,11 @@ const Calculator = () => {
       return;
     }
 
+    if (typeof number === "number") {
+      setScore(String(Number(score) + number));
+      return;
+    }
+
     setScore(score + numberAsString);
   };
 
@@ -20,10 +25,13 @@ const Calculator = () => {
     <div className="calculator">
       <Container>
         <Row>
-          <Col>
+          <Col xs={9}>
             <div className="score">
               <span>{score}</span>
             </div>
+          </Col>
+          <Col xs={3}>
+            <Button onClick={() => setScore("0")}>C</Button>
           </Col>
         </Row>
         <Row>
@@ -36,6 +44,11 @@ const Calculator = () => {
           <Col xs={3}>
             <Button onClick={handleScoreClick}>9</Button>
           </Col>
+          <Col xs={3}>
+            <Button onClick={() => handleScoreClick(50)} color="lightgray">
+              +
+            </Button>
+          </Col>
         </Row>
         <Row>
           <Col xs={3}>
@@ -46,6 +59,11 @@ const Calculator = () => {
           </Col>
           <Col xs={3}>
             <Button onClick={handleScoreClick}>6</Button>
+          </Col>
+          <Col xs={3}>
+            <Button onClick={() => handleScoreClick(-50)} color="lightgray">
+              -
+            </Button>
           </Col>
         </Row>
         <Row>
@@ -58,15 +76,32 @@ const Calculator = () => {
           <Col xs={3}>
             <Button onClick={handleScoreClick}>3</Button>
           </Col>
+          <Col xs={3}>
+            <Button onClick={handleScoreClick}>0</Button>
+          </Col>
         </Row>
         <Row>
           <Col xs={6}>
-            <Button small color="red">
+            <Button
+              small
+              color="red"
+              onClick={() => {
+                addScore("0");
+                setScore(0);
+              }}
+            >
               Farkle
             </Button>
           </Col>
           <Col xs={6}>
-            <Button small color="green">
+            <Button
+              small
+              color="green"
+              onClick={() => {
+                addScore(score);
+                setScore(0);
+              }}
+            >
               Bank
             </Button>
           </Col>
