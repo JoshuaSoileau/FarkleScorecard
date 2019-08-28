@@ -18,6 +18,7 @@ const Button = ({ children, onClick, small, color }) => {
             padding: 0;
             margin-bottom: 20px;
             cursor: pointer;
+            touch-action: manipulation;
           }
 
           button::before {
