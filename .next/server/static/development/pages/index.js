@@ -598,35 +598,51 @@ const Player = ({
   scores,
   active,
   playerIndex,
-  setActivePlayerIndex
+  setActivePlayerIndex,
+  renamePlayer
 }) => {
   const total = scores.length && scores.reduce((one, two) => Number(one) + Number(two)) || "0";
-  return __jsx("button", {
-    onClick: () => setActivePlayerIndex(playerIndex),
-    className: "jsx-3940477816" + " " + ((active ? "is-active" : "") || ""),
+  return __jsx("div", {
+    className: "jsx-585895039",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 16
+    },
+    __self: undefined
+  }, __jsx("button", {
+    onClick: () => renamePlayer(playerIndex, prompt("Enter new player name:")),
+    className: "jsx-585895039" + " " + "edit-player-name",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: undefined
+  }, "\u270E"), __jsx("button", {
+    onClick: () => setActivePlayerIndex(playerIndex),
+    className: "jsx-585895039" + " " + ((active ? "player-button is-active" : "player-button") || ""),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
     },
     __self: undefined
   }, __jsx("span", {
-    className: "jsx-3940477816",
+    className: "jsx-585895039",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 29
     },
     __self: undefined
   }, name), __jsx("span", {
-    className: "jsx-3940477816",
+    className: "jsx-585895039" + " " + "score",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 30
     },
     __self: undefined
-  }, total), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
-    id: "3940477816",
+  }, total)), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
+    id: "585895039",
     __self: undefined
-  }, "button.jsx-3940477816{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,0.2);padding:14px;margin:8px 0;}button.jsx-3940477816:focus{outline:none;}.is-active.jsx-3940477816{border:2px solid violet;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qc29pbGVhdS9QZXJzb25hbC9GYXJrbGVTY29yZWNhcmQvY29tcG9uZW50cy9QbGF5ZXIvUGxheWVyLmpzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFzQlMsQUFHMEIsQUFVQSxBQUlXLGFBSDFCLFdBSUEsa0RBZGEsV0FDbUIsbUhBQ1osa0JBQ3VCLHNDQUM1QixhQUNBLGFBQ2YiLCJmaWxlIjoiL1VzZXJzL2pzb2lsZWF1L1BlcnNvbmFsL0ZhcmtsZVNjb3JlY2FyZC9jb21wb25lbnRzL1BsYXllci9QbGF5ZXIuanN4Iiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gXCJyZWFjdFwiO1xuXG5jb25zdCBQbGF5ZXIgPSAoe1xuICBuYW1lLFxuICBzY29yZXMsXG4gIGFjdGl2ZSxcbiAgcGxheWVySW5kZXgsXG4gIHNldEFjdGl2ZVBsYXllckluZGV4XG59KSA9PiB7XG4gIGNvbnN0IHRvdGFsID1cbiAgICAoc2NvcmVzLmxlbmd0aCAmJiBzY29yZXMucmVkdWNlKChvbmUsIHR3bykgPT4gTnVtYmVyKG9uZSkgKyBOdW1iZXIodHdvKSkpIHx8XG4gICAgXCIwXCI7XG5cbiAgcmV0dXJuIChcbiAgICA8YnV0dG9uXG4gICAgICBjbGFzc05hbWU9e2FjdGl2ZSA/IFwiaXMtYWN0aXZlXCIgOiBcIlwifVxuICAgICAgb25DbGljaz17KCkgPT4gc2V0QWN0aXZlUGxheWVySW5kZXgocGxheWVySW5kZXgpfVxuICAgID5cbiAgICAgIDxzcGFuPntuYW1lfTwvc3Bhbj5cbiAgICAgIDxzcGFuPnt0b3RhbH08L3NwYW4+XG5cbiAgICAgIDxzdHlsZSBqc3g+XG4gICAgICAgIHtgXG4gICAgICAgICAgYnV0dG9uIHtcbiAgICAgICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDhweDtcbiAgICAgICAgICAgIGJveC1zaGFkb3c6IDAgNnB4IDE2cHggcmdiYSgwLCAwLCAwLCAwLjIpO1xuICAgICAgICAgICAgcGFkZGluZzogMTRweDtcbiAgICAgICAgICAgIG1hcmdpbjogOHB4IDA7XG4gICAgICAgICAgfVxuXG4gICAgICAgICAgYnV0dG9uOmZvY3VzIHtcbiAgICAgICAgICAgIG91dGxpbmU6IG5vbmU7XG4gICAgICAgICAgfVxuXG4gICAgICAgICAgLmlzLWFjdGl2ZSB7XG4gICAgICAgICAgICBib3JkZXI6IDJweCBzb2xpZCB2aW9sZXQ7XG4gICAgICAgICAgfVxuICAgICAgICBgfVxuICAgICAgPC9zdHlsZT5cbiAgICA8L2J1dHRvbj5cbiAgKTtcbn07XG5cbmV4cG9ydCBkZWZhdWx0IFBsYXllcjtcbiJdfQ== */\n/*@ sourceURL=/Users/jsoileau/Personal/FarkleScorecard/components/Player/Player.jsx */"));
+  }, ".player-button.jsx-585895039{font-size:16px;line-height:22px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,0.2);padding:14px 14px 14px 44px;margin:8px 0;}.player-button.jsx-585895039:focus{outline:none;}.is-active.jsx-585895039{border:2px solid violet;}.score.jsx-585895039{font-size:24px;}div.jsx-585895039{position:relative;}.edit-player-name.jsx-585895039{position:absolute;font-size:20px;top:14px;left:9px;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qc29pbGVhdS9QZXJzb25hbC9GYXJrbGVTY29yZWNhcmQvY29tcG9uZW50cy9QbGF5ZXIvUGxheWVyLmpzeCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFnQ1MsQUFHNEIsQUFZRixBQUlXLEFBSVQsQUFJRyxBQUlBLGFBZnBCLEVBWm1CLEFBb0JuQixHQUlBLEFBSWlCLE1BWmpCLFFBZmUsQ0E0QkosU0FDQSxTQUNYLHVEQTdCYSxXQUNtQixtSEFDWixrQkFDdUIsc0NBQ2IsNEJBQ2YsYUFDZiIsImZpbGUiOiIvVXNlcnMvanNvaWxlYXUvUGVyc29uYWwvRmFya2xlU2NvcmVjYXJkL2NvbXBvbmVudHMvUGxheWVyL1BsYXllci5qc3giLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QgZnJvbSBcInJlYWN0XCI7XG5cbmNvbnN0IFBsYXllciA9ICh7XG4gIG5hbWUsXG4gIHNjb3JlcyxcbiAgYWN0aXZlLFxuICBwbGF5ZXJJbmRleCxcbiAgc2V0QWN0aXZlUGxheWVySW5kZXgsXG4gIHJlbmFtZVBsYXllclxufSkgPT4ge1xuICBjb25zdCB0b3RhbCA9XG4gICAgKHNjb3Jlcy5sZW5ndGggJiYgc2NvcmVzLnJlZHVjZSgob25lLCB0d28pID0+IE51bWJlcihvbmUpICsgTnVtYmVyKHR3bykpKSB8fFxuICAgIFwiMFwiO1xuXG4gIHJldHVybiAoXG4gICAgPGRpdj5cbiAgICAgIDxidXR0b25cbiAgICAgICAgY2xhc3NOYW1lPVwiZWRpdC1wbGF5ZXItbmFtZVwiXG4gICAgICAgIG9uQ2xpY2s9eygpID0+XG4gICAgICAgICAgcmVuYW1lUGxheWVyKHBsYXllckluZGV4LCBwcm9tcHQoXCJFbnRlciBuZXcgcGxheWVyIG5hbWU6XCIpKVxuICAgICAgICB9XG4gICAgICA+XG4gICAgICAgIOKcjlxuICAgICAgPC9idXR0b24+XG4gICAgICA8YnV0dG9uXG4gICAgICAgIGNsYXNzTmFtZT17YWN0aXZlID8gXCJwbGF5ZXItYnV0dG9uIGlzLWFjdGl2ZVwiIDogXCJwbGF5ZXItYnV0dG9uXCJ9XG4gICAgICAgIG9uQ2xpY2s9eygpID0+IHNldEFjdGl2ZVBsYXllckluZGV4KHBsYXllckluZGV4KX1cbiAgICAgID5cbiAgICAgICAgPHNwYW4+e25hbWV9PC9zcGFuPlxuICAgICAgICA8c3BhbiBjbGFzc05hbWU9XCJzY29yZVwiPnt0b3RhbH08L3NwYW4+XG4gICAgICA8L2J1dHRvbj5cbiAgICAgIDxzdHlsZSBqc3g+XG4gICAgICAgIHtgXG4gICAgICAgICAgLnBsYXllci1idXR0b24ge1xuICAgICAgICAgICAgZm9udC1zaXplOiAxNnB4O1xuICAgICAgICAgICAgbGluZS1oZWlnaHQ6IDIycHg7XG4gICAgICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgICAgICAgICBib3JkZXItcmFkaXVzOiA4cHg7XG4gICAgICAgICAgICBib3gtc2hhZG93OiAwIDZweCAxNnB4IHJnYmEoMCwgMCwgMCwgMC4yKTtcbiAgICAgICAgICAgIHBhZGRpbmc6IDE0cHggMTRweCAxNHB4IDQ0cHg7XG4gICAgICAgICAgICBtYXJnaW46IDhweCAwO1xuICAgICAgICAgIH1cblxuICAgICAgICAgIC5wbGF5ZXItYnV0dG9uOmZvY3VzIHtcbiAgICAgICAgICAgIG91dGxpbmU6IG5vbmU7XG4gICAgICAgICAgfVxuXG4gICAgICAgICAgLmlzLWFjdGl2ZSB7XG4gICAgICAgICAgICBib3JkZXI6IDJweCBzb2xpZCB2aW9sZXQ7XG4gICAgICAgICAgfVxuXG4gICAgICAgICAgLnNjb3JlIHtcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMjRweDtcbiAgICAgICAgICB9XG5cbiAgICAgICAgICBkaXYge1xuICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICAgIH1cblxuICAgICAgICAgIC5lZGl0LXBsYXllci1uYW1lIHtcbiAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMjBweDtcbiAgICAgICAgICAgIHRvcDogMTRweDtcbiAgICAgICAgICAgIGxlZnQ6IDlweDtcbiAgICAgICAgICB9XG4gICAgICAgIGB9XG4gICAgICA8L3N0eWxlPlxuICAgIDwvZGl2PlxuICApO1xufTtcblxuZXhwb3J0IGRlZmF1bHQgUGxheWVyO1xuIl19 */\n/*@ sourceURL=/Users/jsoileau/Personal/FarkleScorecard/components/Player/Player.jsx */"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Player);
@@ -661,19 +677,20 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 const PlayerList = ({
   players,
   activePlayerIndex,
-  setActivePlayerIndex
+  setActivePlayerIndex,
+  renamePlayer
 }) => {
   if (!players.length) return __jsx("div", {
     className: "jsx-2808709856",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 13
     },
     __self: undefined
   }, "Click + to add players", __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default.a, {
     id: "2808709856",
     __self: undefined
-  }, "div.jsx-2808709856{text-align:center;margin:20px 0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qc29pbGVhdS9QZXJzb25hbC9GYXJrbGVTY29yZWNhcmQvY29tcG9uZW50cy9QbGF5ZXJMaXN0L1BsYXllckxpc3QuanN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVVXLEFBR2lDLGtCQUNKLGNBQ2hCIiwiZmlsZSI6Ii9Vc2Vycy9qc29pbGVhdS9QZXJzb25hbC9GYXJrbGVTY29yZWNhcmQvY29tcG9uZW50cy9QbGF5ZXJMaXN0L1BsYXllckxpc3QuanN4Iiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gXCJyZWFjdFwiO1xuaW1wb3J0IHsgQ29udGFpbmVyLCBSb3csIENvbCB9IGZyb20gXCJyZWFjdC1ncmlkLXN5c3RlbVwiO1xuaW1wb3J0IFBsYXllciBmcm9tIFwiLi4vUGxheWVyL1BsYXllclwiO1xuXG5jb25zdCBQbGF5ZXJMaXN0ID0gKHsgcGxheWVycywgYWN0aXZlUGxheWVySW5kZXgsIHNldEFjdGl2ZVBsYXllckluZGV4IH0pID0+IHtcbiAgaWYgKCFwbGF5ZXJzLmxlbmd0aClcbiAgICByZXR1cm4gKFxuICAgICAgPGRpdj5cbiAgICAgICAgQ2xpY2sgKyB0byBhZGQgcGxheWVyc1xuICAgICAgICA8c3R5bGUganN4PlxuICAgICAgICAgIHtgXG4gICAgICAgICAgICBkaXYge1xuICAgICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgICAgICAgIG1hcmdpbjogMjBweCAwO1xuICAgICAgICAgICAgfVxuICAgICAgICAgIGB9XG4gICAgICAgIDwvc3R5bGU+XG4gICAgICA8L2Rpdj5cbiAgICApO1xuXG4gIGNvbnN0IHNvcnRlZFBsYXllcnMgPSBwbGF5ZXJzLnNvcnQoKGEsIGIpID0+IHtcbiAgICByZXR1cm4gYS5vcmRlciA+IGIub3JkZXI7XG4gIH0pO1xuXG4gIGNvbnNvbGUubG9nKHNvcnRlZFBsYXllcnMubWFwKCh7IG5hbWUgfSkgPT4gbmFtZSkpO1xuICByZXR1cm4gKFxuICAgIDxDb250YWluZXI+XG4gICAgICB7c29ydGVkUGxheWVycy5tYXAoKHBsYXllciwgaW5kZXgpID0+IChcbiAgICAgICAgPFJvdz5cbiAgICAgICAgICA8Q29sPlxuICAgICAgICAgICAgPFBsYXllclxuICAgICAgICAgICAgICB7Li4ucGxheWVyfVxuICAgICAgICAgICAgICBwbGF5ZXJJbmRleD17aW5kZXh9XG4gICAgICAgICAgICAgIGFjdGl2ZT17aW5kZXggPT09IGFjdGl2ZVBsYXllckluZGV4fVxuICAgICAgICAgICAgICBzZXRBY3RpdmVQbGF5ZXJJbmRleD17c2V0QWN0aXZlUGxheWVySW5kZXh9XG4gICAgICAgICAgICAvPlxuICAgICAgICAgIDwvQ29sPlxuICAgICAgICA8L1Jvdz5cbiAgICAgICkpfVxuICAgIDwvQ29udGFpbmVyPlxuICApO1xufTtcblxuZXhwb3J0IGRlZmF1bHQgUGxheWVyTGlzdDtcbiJdfQ== */\n/*@ sourceURL=/Users/jsoileau/Personal/FarkleScorecard/components/PlayerList/PlayerList.jsx */"));
+  }, "div.jsx-2808709856{text-align:center;margin:20px 0;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qc29pbGVhdS9QZXJzb25hbC9GYXJrbGVTY29yZWNhcmQvY29tcG9uZW50cy9QbGF5ZXJMaXN0L1BsYXllckxpc3QuanN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWVXLEFBR2lDLGtCQUNKLGNBQ2hCIiwiZmlsZSI6Ii9Vc2Vycy9qc29pbGVhdS9QZXJzb25hbC9GYXJrbGVTY29yZWNhcmQvY29tcG9uZW50cy9QbGF5ZXJMaXN0L1BsYXllckxpc3QuanN4Iiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gXCJyZWFjdFwiO1xuaW1wb3J0IHsgQ29udGFpbmVyLCBSb3csIENvbCB9IGZyb20gXCJyZWFjdC1ncmlkLXN5c3RlbVwiO1xuaW1wb3J0IFBsYXllciBmcm9tIFwiLi4vUGxheWVyL1BsYXllclwiO1xuXG5jb25zdCBQbGF5ZXJMaXN0ID0gKHtcbiAgcGxheWVycyxcbiAgYWN0aXZlUGxheWVySW5kZXgsXG4gIHNldEFjdGl2ZVBsYXllckluZGV4LFxuICByZW5hbWVQbGF5ZXJcbn0pID0+IHtcbiAgaWYgKCFwbGF5ZXJzLmxlbmd0aClcbiAgICByZXR1cm4gKFxuICAgICAgPGRpdj5cbiAgICAgICAgQ2xpY2sgKyB0byBhZGQgcGxheWVyc1xuICAgICAgICA8c3R5bGUganN4PlxuICAgICAgICAgIHtgXG4gICAgICAgICAgICBkaXYge1xuICAgICAgICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgICAgICAgICAgIG1hcmdpbjogMjBweCAwO1xuICAgICAgICAgICAgfVxuICAgICAgICAgIGB9XG4gICAgICAgIDwvc3R5bGU+XG4gICAgICA8L2Rpdj5cbiAgICApO1xuXG4gIGNvbnN0IHNvcnRlZFBsYXllcnMgPSBwbGF5ZXJzLnNvcnQoKGEsIGIpID0+IHtcbiAgICByZXR1cm4gYS5vcmRlciA+IGIub3JkZXI7XG4gIH0pO1xuXG4gIGNvbnNvbGUubG9nKHNvcnRlZFBsYXllcnMubWFwKCh7IG5hbWUgfSkgPT4gbmFtZSkpO1xuICByZXR1cm4gKFxuICAgIDxDb250YWluZXI+XG4gICAgICB7c29ydGVkUGxheWVycy5tYXAoKHBsYXllciwgaW5kZXgpID0+IChcbiAgICAgICAgPFJvdz5cbiAgICAgICAgICA8Q29sPlxuICAgICAgICAgICAgPFBsYXllclxuICAgICAgICAgICAgICB7Li4ucGxheWVyfVxuICAgICAgICAgICAgICBwbGF5ZXJJbmRleD17aW5kZXh9XG4gICAgICAgICAgICAgIGFjdGl2ZT17aW5kZXggPT09IGFjdGl2ZVBsYXllckluZGV4fVxuICAgICAgICAgICAgICBzZXRBY3RpdmVQbGF5ZXJJbmRleD17c2V0QWN0aXZlUGxheWVySW5kZXh9XG4gICAgICAgICAgICAgIHJlbmFtZVBsYXllcj17cmVuYW1lUGxheWVyfVxuICAgICAgICAgICAgLz5cbiAgICAgICAgICA8L0NvbD5cbiAgICAgICAgPC9Sb3c+XG4gICAgICApKX1cbiAgICA8L0NvbnRhaW5lcj5cbiAgKTtcbn07XG5cbmV4cG9ydCBkZWZhdWx0IFBsYXllckxpc3Q7XG4iXX0= */\n/*@ sourceURL=/Users/jsoileau/Personal/FarkleScorecard/components/PlayerList/PlayerList.jsx */"));
   const sortedPlayers = players.sort((a, b) => {
     return a.order > b.order;
   });
@@ -683,28 +700,29 @@ const PlayerList = ({
   return __jsx(react_grid_system__WEBPACK_IMPORTED_MODULE_3__["Container"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 32
     },
     __self: undefined
   }, sortedPlayers.map((player, index) => __jsx(react_grid_system__WEBPACK_IMPORTED_MODULE_3__["Row"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 34
     },
     __self: undefined
   }, __jsx(react_grid_system__WEBPACK_IMPORTED_MODULE_3__["Col"], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 35
     },
     __self: undefined
   }, __jsx(_Player_Player__WEBPACK_IMPORTED_MODULE_4__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, player, {
     playerIndex: index,
     active: index === activePlayerIndex,
     setActivePlayerIndex: setActivePlayerIndex,
+    renamePlayer: renamePlayer,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 36
     },
     __self: undefined
   }))))));
@@ -771,12 +789,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Header_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Header/Header */ "./components/Header/Header.jsx");
-/* harmony import */ var _components_PlayerList_PlayerList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/PlayerList/PlayerList */ "./components/PlayerList/PlayerList.jsx");
-/* harmony import */ var _components_Calculator_Calculator__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Calculator/Calculator */ "./components/Calculator/Calculator.jsx");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/head */ "next/head");
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_Header_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Header/Header */ "./components/Header/Header.jsx");
+/* harmony import */ var _components_PlayerList_PlayerList__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/PlayerList/PlayerList */ "./components/PlayerList/PlayerList.jsx");
+/* harmony import */ var _components_Calculator_Calculator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Calculator/Calculator */ "./components/Calculator/Calculator.jsx");
 var _jsxFileName = "/Users/jsoileau/Personal/FarkleScorecard/pages/index.js";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
 
 
 
@@ -831,41 +852,69 @@ const Home = () => {
     }
   };
 
+  const renamePlayer = (index, name) => {
+    let newPlayers = players;
+    newPlayers[index].name = name;
+    setPlayers(newPlayers);
+
+    if (activePlayerIndex + 1 >= players.length) {
+      setActivePlayerIndex(0);
+    } else {
+      setActivePlayerIndex(activePlayerIndex + 1);
+    }
+  };
+
   return __jsx("div", {
     className: "jsx-274656713",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 71
     },
     __self: undefined
-  }, __jsx(_components_Header_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72
+    },
+    __self: undefined
+  }, __jsx("meta", {
+    name: "viewport",
+    content: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
+    className: "jsx-274656713",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 73
+    },
+    __self: undefined
+  })), __jsx(_components_Header_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {
     title: title,
     addPlayer: addPlayer,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 78
     },
     __self: undefined
-  }), __jsx(_components_PlayerList_PlayerList__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), __jsx(_components_PlayerList_PlayerList__WEBPACK_IMPORTED_MODULE_4__["default"], {
     players: players,
     activePlayerIndex: activePlayerIndex,
     setActivePlayerIndex: setActivePlayerIndex,
+    renamePlayer: renamePlayer,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 79
     },
     __self: undefined
-  }), __jsx(_components_Calculator_Calculator__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }), __jsx(_components_Calculator_Calculator__WEBPACK_IMPORTED_MODULE_5__["default"], {
     addScore: addScore,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 85
     },
     __self: undefined
   }), __jsx(styled_jsx_style__WEBPACK_IMPORTED_MODULE_0___default.a, {
     id: "274656713",
     __self: undefined
-  }, "div.jsx-274656713{max-width:320px;margin:0 auto;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qc29pbGVhdS9QZXJzb25hbC9GYXJrbGVTY29yZWNhcmQvcGFnZXMvaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBbUVTLEFBRzZCLGdCQUNGLGNBQ2hCIiwiZmlsZSI6Ii9Vc2Vycy9qc29pbGVhdS9QZXJzb25hbC9GYXJrbGVTY29yZWNhcmQvcGFnZXMvaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QsIHsgdXNlU3RhdGUgfSBmcm9tIFwicmVhY3RcIjtcbmltcG9ydCBIZWFkZXIgZnJvbSBcIi4uL2NvbXBvbmVudHMvSGVhZGVyL0hlYWRlclwiO1xuaW1wb3J0IFBsYXllckxpc3QgZnJvbSBcIi4uL2NvbXBvbmVudHMvUGxheWVyTGlzdC9QbGF5ZXJMaXN0XCI7XG5pbXBvcnQgQ2FsY3VsYXRvciBmcm9tIFwiLi4vY29tcG9uZW50cy9DYWxjdWxhdG9yL0NhbGN1bGF0b3JcIjtcblxuY29uc3QgaW5pdGlhbFBsYXllcnMgPSBbXG4gIHtcbiAgICBuYW1lOiBcIlBsYXllciAxXCIsXG4gICAgb3JkZXI6IDAsXG4gICAgc2NvcmVzOiBbXVxuICB9LFxuICB7XG4gICAgbmFtZTogXCJQbGF5ZXIgMlwiLFxuICAgIG9yZGVyOiAxLFxuICAgIHNjb3JlczogW11cbiAgfVxuXTtcblxuY29uc3QgSG9tZSA9ICgpID0+IHtcbiAgY29uc3QgW3RpdGxlLCBzZXRUaXRsZV0gPSB1c2VTdGF0ZShcIkZhcmtsZSBTY29yZWNhcmRcIik7XG4gIGNvbnN0IFtwbGF5ZXJzLCBzZXRQbGF5ZXJzXSA9IHVzZVN0YXRlKGluaXRpYWxQbGF5ZXJzKTtcbiAgY29uc3QgW2FjdGl2ZVBsYXllckluZGV4LCBzZXRBY3RpdmVQbGF5ZXJJbmRleF0gPSB1c2VTdGF0ZSgwKTtcblxuICBjb25zdCBhZGRQbGF5ZXIgPSBuYW1lID0+IHtcbiAgICBzZXRQbGF5ZXJzKFtcbiAgICAgIC4uLnBsYXllcnMsXG4gICAgICB7XG4gICAgICAgIG5hbWUsXG4gICAgICAgIG9yZGVyOiBwbGF5ZXJzLmxlbmd0aCxcbiAgICAgICAgc2NvcmVzOiBbXVxuICAgICAgfVxuICAgIF0pO1xuICB9O1xuXG4gIGNvbnN0IGFkZFNjb3JlID0gc2NvcmUgPT4ge1xuICAgIC8vIGNvbnN0IHBsYXllciA9IHBsYXllcnNbYWN0aXZlUGxheWVySW5kZXhdO1xuICAgIC8vIGNvbnN0IHBsYXllck5hbWUgPSBwbGF5ZXIubmFtZTtcbiAgICAvLyBjb25zdCBvdGhlcnMgPSBwbGF5ZXJzLmZpbHRlcigoeyBuYW1lIH0pID0+IG5hbWUgIT09IHBsYXllck5hbWUpO1xuXG4gICAgLy8gaWYgKCFwbGF5ZXIpIHJldHVybjtcblxuICAgIGxldCBuZXdQbGF5ZXJzID0gcGxheWVycztcblxuICAgIG5ld1BsYXllcnNbYWN0aXZlUGxheWVySW5kZXhdLnNjb3Jlcy5wdXNoKHNjb3JlKTtcblxuICAgIC8vIHBsYXllci5zY29yZXMucHVzaChzY29yZSk7XG4gICAgLy8gc2V0UGxheWVycyhbLi4ub3RoZXJzLCBwbGF5ZXJdKTtcbiAgICBzZXRQbGF5ZXJzKG5ld1BsYXllcnMpO1xuXG4gICAgaWYgKGFjdGl2ZVBsYXllckluZGV4ICsgMSA+PSBwbGF5ZXJzLmxlbmd0aCkge1xuICAgICAgc2V0QWN0aXZlUGxheWVySW5kZXgoMCk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNldEFjdGl2ZVBsYXllckluZGV4KGFjdGl2ZVBsYXllckluZGV4ICsgMSk7XG4gICAgfVxuICB9O1xuXG4gIHJldHVybiAoXG4gICAgPGRpdj5cbiAgICAgIDxIZWFkZXIgdGl0bGU9e3RpdGxlfSBhZGRQbGF5ZXI9e2FkZFBsYXllcn0gLz5cbiAgICAgIDxQbGF5ZXJMaXN0XG4gICAgICAgIHBsYXllcnM9e3BsYXllcnN9XG4gICAgICAgIGFjdGl2ZVBsYXllckluZGV4PXthY3RpdmVQbGF5ZXJJbmRleH1cbiAgICAgICAgc2V0QWN0aXZlUGxheWVySW5kZXg9e3NldEFjdGl2ZVBsYXllckluZGV4fVxuICAgICAgLz5cbiAgICAgIDxDYWxjdWxhdG9yIGFkZFNjb3JlPXthZGRTY29yZX0gLz5cblxuICAgICAgPHN0eWxlIGpzeD5cbiAgICAgICAge2BcbiAgICAgICAgICBkaXYge1xuICAgICAgICAgICAgbWF4LXdpZHRoOiAzMjBweDtcbiAgICAgICAgICAgIG1hcmdpbjogMCBhdXRvO1xuICAgICAgICAgIH1cbiAgICAgICAgYH1cbiAgICAgIDwvc3R5bGU+XG4gICAgPC9kaXY+XG4gICk7XG59O1xuXG5leHBvcnQgZGVmYXVsdCBIb21lO1xuIl19 */\n/*@ sourceURL=/Users/jsoileau/Personal/FarkleScorecard/pages/index.js */"));
+  }, "div.jsx-274656713{max-width:320px;margin:0 auto;}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9qc29pbGVhdS9QZXJzb25hbC9GYXJrbGVTY29yZWNhcmQvcGFnZXMvaW5kZXguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBdUZTLEFBRzZCLGdCQUNGLGNBQ2hCIiwiZmlsZSI6Ii9Vc2Vycy9qc29pbGVhdS9QZXJzb25hbC9GYXJrbGVTY29yZWNhcmQvcGFnZXMvaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgUmVhY3QsIHsgdXNlU3RhdGUgfSBmcm9tIFwicmVhY3RcIjtcbmltcG9ydCBIZWFkIGZyb20gXCJuZXh0L2hlYWRcIjtcbmltcG9ydCBIZWFkZXIgZnJvbSBcIi4uL2NvbXBvbmVudHMvSGVhZGVyL0hlYWRlclwiO1xuaW1wb3J0IFBsYXllckxpc3QgZnJvbSBcIi4uL2NvbXBvbmVudHMvUGxheWVyTGlzdC9QbGF5ZXJMaXN0XCI7XG5pbXBvcnQgQ2FsY3VsYXRvciBmcm9tIFwiLi4vY29tcG9uZW50cy9DYWxjdWxhdG9yL0NhbGN1bGF0b3JcIjtcblxuY29uc3QgaW5pdGlhbFBsYXllcnMgPSBbXG4gIHtcbiAgICBuYW1lOiBcIlBsYXllciAxXCIsXG4gICAgb3JkZXI6IDAsXG4gICAgc2NvcmVzOiBbXVxuICB9LFxuICB7XG4gICAgbmFtZTogXCJQbGF5ZXIgMlwiLFxuICAgIG9yZGVyOiAxLFxuICAgIHNjb3JlczogW11cbiAgfVxuXTtcblxuY29uc3QgSG9tZSA9ICgpID0+IHtcbiAgY29uc3QgW3RpdGxlLCBzZXRUaXRsZV0gPSB1c2VTdGF0ZShcIkZhcmtsZSBTY29yZWNhcmRcIik7XG4gIGNvbnN0IFtwbGF5ZXJzLCBzZXRQbGF5ZXJzXSA9IHVzZVN0YXRlKGluaXRpYWxQbGF5ZXJzKTtcbiAgY29uc3QgW2FjdGl2ZVBsYXllckluZGV4LCBzZXRBY3RpdmVQbGF5ZXJJbmRleF0gPSB1c2VTdGF0ZSgwKTtcblxuICBjb25zdCBhZGRQbGF5ZXIgPSBuYW1lID0+IHtcbiAgICBzZXRQbGF5ZXJzKFtcbiAgICAgIC4uLnBsYXllcnMsXG4gICAgICB7XG4gICAgICAgIG5hbWUsXG4gICAgICAgIG9yZGVyOiBwbGF5ZXJzLmxlbmd0aCxcbiAgICAgICAgc2NvcmVzOiBbXVxuICAgICAgfVxuICAgIF0pO1xuICB9O1xuXG4gIGNvbnN0IGFkZFNjb3JlID0gc2NvcmUgPT4ge1xuICAgIC8vIGNvbnN0IHBsYXllciA9IHBsYXllcnNbYWN0aXZlUGxheWVySW5kZXhdO1xuICAgIC8vIGNvbnN0IHBsYXllck5hbWUgPSBwbGF5ZXIubmFtZTtcbiAgICAvLyBjb25zdCBvdGhlcnMgPSBwbGF5ZXJzLmZpbHRlcigoeyBuYW1lIH0pID0+IG5hbWUgIT09IHBsYXllck5hbWUpO1xuXG4gICAgLy8gaWYgKCFwbGF5ZXIpIHJldHVybjtcblxuICAgIGxldCBuZXdQbGF5ZXJzID0gcGxheWVycztcblxuICAgIG5ld1BsYXllcnNbYWN0aXZlUGxheWVySW5kZXhdLnNjb3Jlcy5wdXNoKHNjb3JlKTtcblxuICAgIC8vIHBsYXllci5zY29yZXMucHVzaChzY29yZSk7XG4gICAgLy8gc2V0UGxheWVycyhbLi4ub3RoZXJzLCBwbGF5ZXJdKTtcbiAgICBzZXRQbGF5ZXJzKG5ld1BsYXllcnMpO1xuXG4gICAgaWYgKGFjdGl2ZVBsYXllckluZGV4ICsgMSA+PSBwbGF5ZXJzLmxlbmd0aCkge1xuICAgICAgc2V0QWN0aXZlUGxheWVySW5kZXgoMCk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNldEFjdGl2ZVBsYXllckluZGV4KGFjdGl2ZVBsYXllckluZGV4ICsgMSk7XG4gICAgfVxuICB9O1xuXG4gIGNvbnN0IHJlbmFtZVBsYXllciA9IChpbmRleCwgbmFtZSkgPT4ge1xuICAgIGxldCBuZXdQbGF5ZXJzID0gcGxheWVycztcbiAgICBuZXdQbGF5ZXJzW2luZGV4XS5uYW1lID0gbmFtZTtcblxuICAgIHNldFBsYXllcnMobmV3UGxheWVycyk7XG4gICAgaWYgKGFjdGl2ZVBsYXllckluZGV4ICsgMSA+PSBwbGF5ZXJzLmxlbmd0aCkge1xuICAgICAgc2V0QWN0aXZlUGxheWVySW5kZXgoMCk7XG4gICAgfSBlbHNlIHtcbiAgICAgIHNldEFjdGl2ZVBsYXllckluZGV4KGFjdGl2ZVBsYXllckluZGV4ICsgMSk7XG4gICAgfVxuICB9O1xuXG4gIHJldHVybiAoXG4gICAgPGRpdj5cbiAgICAgIDxIZWFkPlxuICAgICAgICA8bWV0YVxuICAgICAgICAgIG5hbWU9XCJ2aWV3cG9ydFwiXG4gICAgICAgICAgY29udGVudD1cIndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAsIG1heGltdW0tc2NhbGU9MS4wLCB1c2VyLXNjYWxhYmxlPTBcIlxuICAgICAgICAvPlxuICAgICAgPC9IZWFkPlxuICAgICAgPEhlYWRlciB0aXRsZT17dGl0bGV9IGFkZFBsYXllcj17YWRkUGxheWVyfSAvPlxuICAgICAgPFBsYXllckxpc3RcbiAgICAgICAgcGxheWVycz17cGxheWVyc31cbiAgICAgICAgYWN0aXZlUGxheWVySW5kZXg9e2FjdGl2ZVBsYXllckluZGV4fVxuICAgICAgICBzZXRBY3RpdmVQbGF5ZXJJbmRleD17c2V0QWN0aXZlUGxheWVySW5kZXh9XG4gICAgICAgIHJlbmFtZVBsYXllcj17cmVuYW1lUGxheWVyfVxuICAgICAgLz5cbiAgICAgIDxDYWxjdWxhdG9yIGFkZFNjb3JlPXthZGRTY29yZX0gLz5cblxuICAgICAgPHN0eWxlIGpzeD5cbiAgICAgICAge2BcbiAgICAgICAgICBkaXYge1xuICAgICAgICAgICAgbWF4LXdpZHRoOiAzMjBweDtcbiAgICAgICAgICAgIG1hcmdpbjogMCBhdXRvO1xuICAgICAgICAgIH1cbiAgICAgICAgYH1cbiAgICAgIDwvc3R5bGU+XG4gICAgPC9kaXY+XG4gICk7XG59O1xuXG5leHBvcnQgZGVmYXVsdCBIb21lO1xuIl19 */\n/*@ sourceURL=/Users/jsoileau/Personal/FarkleScorecard/pages/index.js */"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -892,6 +941,17 @@ module.exports = __webpack_require__(/*! /Users/jsoileau/Personal/FarkleScorecar
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/assign");
+
+/***/ }),
+
+/***/ "next/head":
+/*!****************************!*\
+  !*** external "next/head" ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next/head");
 
 /***/ }),
 

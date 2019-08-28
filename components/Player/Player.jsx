@@ -5,42 +5,69 @@ const Player = ({
   scores,
   active,
   playerIndex,
-  setActivePlayerIndex
+  setActivePlayerIndex,
+  renamePlayer
 }) => {
   const total =
     (scores.length && scores.reduce((one, two) => Number(one) + Number(two))) ||
     "0";
 
   return (
-    <button
-      className={active ? "is-active" : ""}
-      onClick={() => setActivePlayerIndex(playerIndex)}
-    >
-      <span>{name}</span>
-      <span>{total}</span>
-
+    <div>
+      <button
+        className="edit-player-name"
+        onClick={() =>
+          renamePlayer(playerIndex, prompt("Enter new player name:"))
+        }
+      >
+        ✎
+      </button>
+      <button
+        className={active ? "player-button is-active" : "player-button"}
+        onClick={() => setActivePlayerIndex(playerIndex)}
+      >
+        <span>{name}</span>
+        <span className="score">{total}</span>
+      </button>
       <style jsx>
         {`
-          button {
+          .player-button {
+            font-size: 16px;
+            line-height: 22px;
             display: flex;
             width: 100%;
             justify-content: space-between;
             border-radius: 8px;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-            padding: 14px;
+            padding: 14px 14px 14px 44px;
             margin: 8px 0;
           }
 
-          button:focus {
+          .player-button:focus {
             outline: none;
           }
 
           .is-active {
             border: 2px solid violet;
           }
+
+          .score {
+            font-size: 24px;
+          }
+
+          div {
+            position: relative;
+          }
+
+          .edit-player-name {
+            position: absolute;
+            font-size: 20px;
+            top: 14px;
+            left: 9px;
+          }
         `}
       </style>
-    </button>
+    </div>
   );
 };
 

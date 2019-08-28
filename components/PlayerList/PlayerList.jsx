@@ -2,7 +2,12 @@ import React from "react";
 import { Container, Row, Col } from "react-grid-system";
 import Player from "../Player/Player";
 
-const PlayerList = ({ players, activePlayerIndex, setActivePlayerIndex }) => {
+const PlayerList = ({
+  players,
+  activePlayerIndex,
+  setActivePlayerIndex,
+  renamePlayer
+}) => {
   if (!players.length)
     return (
       <div>
@@ -33,6 +38,7 @@ const PlayerList = ({ players, activePlayerIndex, setActivePlayerIndex }) => {
               playerIndex={index}
               active={index === activePlayerIndex}
               setActivePlayerIndex={setActivePlayerIndex}
+              renamePlayer={renamePlayer}
             />
           </Col>
         </Row>

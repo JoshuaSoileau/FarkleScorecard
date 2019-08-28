@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Head from "next/head";
 import Header from "../components/Header/Header";
 import PlayerList from "../components/PlayerList/PlayerList";
 import Calculator from "../components/Calculator/Calculator";
@@ -54,13 +55,32 @@ const Home = () => {
     }
   };
 
+  const renamePlayer = (index, name) => {
+    let newPlayers = players;
+    newPlayers[index].name = name;
+
+    setPlayers(newPlayers);
+    if (activePlayerIndex + 1 >= players.length) {
+      setActivePlayerIndex(0);
+    } else {
+      setActivePlayerIndex(activePlayerIndex + 1);
+    }
+  };
+
   return (
     <div>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        />
+      </Head>
       <Header title={title} addPlayer={addPlayer} />
       <PlayerList
         players={players}
         activePlayerIndex={activePlayerIndex}
         setActivePlayerIndex={setActivePlayerIndex}
+        renamePlayer={renamePlayer}
       />
       <Calculator addScore={addScore} />
 
