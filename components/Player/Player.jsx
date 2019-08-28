@@ -60,6 +60,10 @@ const Player = ({
           }
 
           .edit-player-name {
+            border: none;
+            padding: 0;
+            margin: 0;
+            background: none;
             position: absolute;
             font-size: 20px;
             top: 14px;
